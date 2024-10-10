@@ -49,7 +49,7 @@ func main() {
 	//Loading .env File
 	err := godotenv.Load()
 	if err != nil {
-		log.Fatal("Error loading .env file")
+		log.Fatal("Error in file")
 	}
 
 	// Twitter API credentials
