@@ -11,7 +11,8 @@ Create an `.env` file in the root directory of the project (this is where you wi
 1. Clone the repository or download the script.
 2. Run the following command to install the required packages:
     ```bash
-    go get github.com/dghubble/oauth1 github.com/joho/godotenv
+    go get github.com/dghubble/oauth1 
+    github.com/joho/godotenv
     ```
 
 3. Create a `.env` file in the root directory with the following variables:
@@ -24,20 +25,6 @@ Create an `.env` file in the root directory of the project (this is where you wi
     ```
 
 4. Replace `your_consumer_key`, `your_consumer_secret`, `your_access_token`, `your_access_token_secret`, and `your_bearer_token` with the appropriate values from your Twitter Developer account.
-
-## Running the Application
-
-1. Load the environment variables:
-    ```bash
-    source .env
-    ```
-
-2. Run the Go application:
-    ```bash
-    go run main.go
-    ```
-
-This will post a tweet, wait for 30 seconds, and then delete the tweet.
 
 ## Notes
 
