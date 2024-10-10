@@ -7,6 +7,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/dghubble/oauth1"
 	"github.com/joho/godotenv"
@@ -36,7 +37,7 @@ func deleteTweet(client *http.Client, tweetID string) {
 
 	// Check the response
 	if resp.StatusCode != http.StatusNoContent {
-		log.Fatalf("A new tweet has been created and deleted as well: %v\n", resp.Status)
+		log.Fatalf("New tweet posted and deleted: %v\n", resp.Status)
 	}
 
 	// Successfully deleted the tweet
@@ -44,7 +45,6 @@ func deleteTweet(client *http.Client, tweetID string) {
 }
 
 func main() {
-	// Twitter API credentials
 
 	//Loading .env File
 	err := godotenv.Load()
@@ -52,6 +52,7 @@ func main() {
 		log.Fatal("Error loading .env file")
 	}
 
+	// Twitter API credentials
 	consumerKey := os.Getenv("CONSUMER_KEY")
 	consumerSecret := os.Getenv("CONSUMER_SECRET")
 	accessToken := os.Getenv("ACCESS_TOKEN")
@@ -62,23 +63,7 @@ func main() {
 	token := oauth1.NewToken(accessToken, accessTokenSecret)
 	httpClient := config.Client(oauth1.NoContext, token)
 
-	// Twitter client
-	// client := twitter.NewClient(httpClient)
-
 	// Post a tweet
-
-	// tweet, _, err := client.Statuses.Update("Hello from Twitter API!", nil)
-	// if err != nil {
-	// log.Fatalf("Failed to post tweet: %v", err)
-	// }
-	// fmt.Printf("Successfully posted tweet with ID: %d\n", tweet.ID)
-
-	// tweet, _, err := client.Statuses.Update("Hello, Twitter! This is my first tweet using Go!", nil)
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-	// fmt.Printf("Tweet posted: %s\n", tweet.Text)
-
 	// Define the tweet payload
 	tweetText := "Hello Twitter API V2! This is an EXTERNAL tweet from WINP2000 Team."
 	payload := map[string]interface{}{
@@ -120,8 +105,11 @@ func main() {
 	}
 	tweetID := result["data"].(map[string]interface{})["id"].(string)
 
-	fmt.Printf("Posted Tweet ID: %v\n", result["data"].(map[string]interface{})["id"])
+	fmt.Printf("Tweet ID: %v\n", result["data"].(map[string]interface{})["id"])
 
-	// Delete the tweet (optional)
+	//  Sleep for 30 seconds
+	time.Sleep(30 * time.Second)
+
+	// Delete the tweet
 	deleteTweet(httpClient, tweetID)
 }
