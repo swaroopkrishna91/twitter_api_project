@@ -2,11 +2,9 @@
 
 This Go application demonstrates how to post a tweet using Twitter API v2 and delete the tweet after a delay of 30 seconds.
 
-## Prerequisites
+## Requirements
 
-1. Go installed on your machine.
-2. A Twitter Developer account and access to the Twitter API.
-3. Create an `.env` file in the root directory of the project (this is where you will store your Twitter API credentials).
+Create an `.env` file in the root directory of the project (this is where you will store your Twitter API credentials).
 
 ## Setup
 
@@ -23,7 +21,6 @@ This Go application demonstrates how to post a tweet using Twitter API v2 and de
     CONSUMER_SECRET=your_consumer_secret
     ACCESS_TOKEN=your_access_token
     ACCESS_TOKEN_SECRET=your_access_token_secret
-    TWITTER_BEARER_TOKEN=your_bearer_token
     ```
 
 4. Replace `your_consumer_key`, `your_consumer_secret`, `your_access_token`, `your_access_token_secret`, and `your_bearer_token` with the appropriate values from your Twitter Developer account.
