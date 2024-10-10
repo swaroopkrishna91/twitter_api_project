@@ -41,7 +41,7 @@ func deleteTweet(client *http.Client, tweetID string) {
 	}
 
 	// Successfully deleted the tweet
-	fmt.Printf("Tweet with ID %s deleted successfully.\n", tweetID)
+	fmt.Printf("Tweet with ID %s deleted.\n", tweetID)
 }
 
 func main() {
@@ -65,9 +65,9 @@ func main() {
 
 	// Post a tweet
 	// Define the tweet payload
-	tweetText := "Hello Twitter API V2! This is an EXTERNAL tweet from WINP2000 Team."
+	tweetstring := "Personal Tweet Test"
 	payload := map[string]interface{}{
-		"text": tweetText,
+		"text": tweetstring,
 	}
 	payloadBytes, err := json.Marshal(payload)
 	if err != nil {
